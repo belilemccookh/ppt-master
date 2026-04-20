@@ -25,7 +25,8 @@ python3 skills/ppt-master/scripts/project_manager.py validate <project_path>
 
 # Image tools
 python3 skills/ppt-master/scripts/analyze_images.py <project_path>/images
-python3 skills/ppt-master/scripts/image_gen.py "prompt" --aspect_ratio 16:9 --image_size 1K -o <project_path>/images
+python3 skills/ppt-master/scripts/image_gen.py "prompt" --aspect_ratio 16:9 --image_size 2K -o <project_path>/images
+# Note: --image_size 2K is the preferred default; 1K is noticeably softer especially on projected slides
 
 # SVG quality check
 python3 skills/ppt-master/scripts/svg_quality_checker.py <project_path>
@@ -52,8 +53,5 @@ python3 skills/ppt-master/scripts/svg_to_pptx.py <project_path> -s final
 ## Personal Notes
 
 - I primarily use this for work presentations; my default format is `ppt169` (16:9 widescreen).
-- When generating images, `--image_size 2K` tends to produce noticeably sharper results than the default `1K` — worth the extra generation time.
-
-## SVG Technical Constraints (Non-negotiable)
-
-**Banned features**: `mask` | `<style>` | `class` | external CSS | `<foreignObject>` | `textPath` | `@font-face` | `<animate*>` | `<script>` | `<if
+- When generating images, `--image_size 2K` tends to produce noticeably sharper results — updated the example command above to reflect this as the default.
+- For internal work decks I usually run `--only native` to skip the legacy SVG export and save time.
